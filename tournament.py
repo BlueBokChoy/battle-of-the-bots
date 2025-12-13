@@ -1,3 +1,9 @@
+"""
+Author: Roy Chen
+Date: 2025-12-13
+Description: Mainline logic for tournament.
+"""
+
 import game
 
 # Import however many robots, these are placeholders
@@ -136,4 +142,5 @@ def print_results(scores):
         print("----------------------------------------")
 
     print("\n=== OFFICE OF INORGANIC INTELLIGENCE ===")
+
 
