@@ -7,8 +7,8 @@ This file contains functions for playing individual rounds and full matches betw
 MATRIX REFERENCE (denote C=cooperate, denote D=defect):
 
 C,C: (3,3)
-C,D|D,C: (5,0)|(0,5)
-D,D: (1,1)
+C,D|D,C: (5,1)|(1,5)
+D,D: (0,0)
 
 author: Ryan S.
 """
@@ -19,9 +19,9 @@ ROUNDS_PER_MATCH = 100
 #Global Variable
 PAYOFFS = {
     ("C", "C"): (3, 3),
-    ("D", "C"): (5, 0),
-    ("C", "D"): (0,5),
-    ("D", "D"): (1, 1),
+    ("D", "C"): (5, 1),
+    ("C", "D"): (1,5),
+    ("D", "D"): (0, 0),
 }
 
 def play_round(robot_1, robot_2):
@@ -66,13 +66,11 @@ def play_match(robot_1, robot_2, rounds=ROUNDS_PER_MATCH):
     robot_1.reset()
     robot_2.reset()
     
-    score_1 = 0
-    score_2 = 0
+    score_robot_1 = 0
+    score_robot_2 = 0
     
     for i in range(rounds):
         r1 = play_round(robot_1, robot_2)
-        r2 = play_round(robot_1, robot_2)
-        score_1 += r1
-        score_2 += r2
-        
-    return score_1, score_2
+        score_robot_1 += int((r1[0]))
+        score_robot_2 += int((r1[1]))
+        return score_robot_1, score_robot_2
